@@ -28,42 +28,42 @@ def arithmetic_arranger(problems, show_answers=False):
         ]
 
         # Determine maximum lengths for formatting
-        longest_char = [max([len(reformat_list[0][i]), len(reformat_list[1][i][1])]) for i in range(len(calc_list_split))]
-        shortest_char = [min([len(reformat_list[0][i]), len(reformat_list[1][i][1])]) for i in range(len(calc_list_split))]
+        longest_num = [max([len(reformat_list[0][i]), len(reformat_list[1][i][1])]) for i in range(len(calc_list_split))]
+        shortest_num = [min([len(reformat_list[0][i]), len(reformat_list[1][i][1])]) for i in range(len(calc_list_split))]
 
         # Build the formatted output
         for idx1, char_list in enumerate(reformat_list):
             for idx2, char in enumerate(char_list):
                 if idx1 == 0 and idx2 == 0:
-                    formatted_output += char.rjust(2 + longest_char[idx2])
+                    formatted_output += char.rjust(2 + longest_num[idx2])
                 if idx1 == 0 and idx2 > 0:
-                    formatted_output += char.rjust(6 + longest_char[idx2])
+                    formatted_output += char.rjust(6 + longest_num[idx2])
                 if idx1 == 1 and idx2 == 0:
-                    if len(char_list[0][1]) < longest_char[idx2]:
-                        formatted_output += '\n' + char[0] + char_list[0][1].rjust(2 + longest_char[idx2] - shortest_char[idx2])
+                    if len(char_list[0][1]) < longest_num[idx2]:
+                        formatted_output += '\n' + char[0] + char_list[0][1].rjust(2 + longest_num[idx2] - shortest_num[idx2])
                     else:
-                        formatted_output += '\n' + char[0] + char_list[0][1].rjust(1 + longest_char[idx2])
+                        formatted_output += '\n' + char[0] + char_list[0][1].rjust(1 + longest_num[idx2])
                 if idx1 == 1 and idx2 > 0:
-                    formatted_output += char[0].rjust(5) + char[1].rjust(1 + longest_char[idx2])
+                    formatted_output += char[0].rjust(5) + char[1].rjust(1 + longest_num[idx2])
                 if idx1 == 1 and idx2 == len(char_list) - 1:
                     formatted_output += '\n'
                     continue
                 if idx1 == 2:
-                    number_of_dashes = longest_char[idx2] + 2
+                    number_of_dashes = longest_num[idx2] + 2
                     str_to_add = '-' * number_of_dashes
                     if idx2 == 0:
-                        formatted_output += str_to_add.rjust(longest_char[idx2])
+                        formatted_output += str_to_add.rjust(longest_num[idx2])
                     else:
-                        formatted_output += str_to_add.rjust(6 + longest_char[idx2])
+                        formatted_output += str_to_add.rjust(6 + longest_num[idx2])
 
         # Add answers if requested
         for idx3, char1 in enumerate(reformat_list[2]):
             if answer:
                 if idx3 == 0:
                     formatted_output += '\n'
-                    formatted_output += str(char1).rjust(2 + longest_char[idx3])
+                    formatted_output += str(char1).rjust(2 + longest_num[idx3])
                 else:
-                    formatted_output += str(char1).rjust(6 + longest_char[idx3])
+                    formatted_output += str(char1).rjust(6 + longest_num[idx3])
 
         return formatted_output
 
