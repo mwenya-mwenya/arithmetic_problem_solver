@@ -1,0 +1,7 @@
+The arithmetic_arranger function takes a list of arithmetic problems (expressions) and an optional argument show_answers.
+It splits each problem into its components (operands and operator) using split().
+The function then checks for various error conditions related to the format of the expressions.
+If there are no errors, it creates a reformat_list containing the first operand, operator, and result for each expression.
+It determines the maximum lengths needed for formatting (to align the expressions).
+The formatted output is built by aligning the operands, operators, and dashes.
+If show_answers is True, the results are added to the output.
